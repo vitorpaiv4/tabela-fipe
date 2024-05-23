@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react';
+'use client'
+import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { getMarcas, getModelos, getAnos } from '../services/api';
+import {ResultContext} from '../context/ResultProvider';
 
 export default function Home() {
+
+    const {name} = useContext(ResultContext)
+
   const [marcas, setMarcas] = useState([]);
   const [modelos, setModelos] = useState([]);
   const [anos, setAnos] = useState([]);
@@ -53,7 +58,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen" style={{ backgroundColor: '#fcf4fc' }}>
       <h1 className="text-center text-4xl font-bold mb-4">Tabela Fipe</h1>
-      <p className="text-center text-xl font-bold mb-4">Consulte o valor de um veículo de forma gratuita</p>
+      <p className="text-center text-xl font-bold mb-4">Consulte o valor de um veículo de forma gratuita {name}</p>
       <div className="p-8 rounded-lg shadow-lg max-w-md w-full space-y-4 bg-white">
         <form onSubmit={handleSubmit}>
           <div>

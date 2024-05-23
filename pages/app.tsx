@@ -1,3 +1,4 @@
+import ResultProvider from '@/context/ResultProvider';
 import '../styles/globals.css';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
@@ -12,12 +13,14 @@ const theme = createTheme({
   }
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }:any) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />  // Reset CSS e define o fundo padrão
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <ResultProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />  // Reset CSS e define o fundo padrão
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </ResultProvider>
   );
 }
 
